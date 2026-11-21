@@ -1,4 +1,6 @@
 """SmartCart AI — Marketing intelligence platform for e-commerce."""
+from pathlib import Path
+
 import streamlit as st
 
 st.set_page_config(page_title="SmartCart AI", page_icon="🛍️", layout="wide", initial_sidebar_state="expanded")
@@ -8,7 +10,7 @@ from core import data as D  # noqa: E402
 from core.theme import inject_css  # noqa: E402
 
 inject_css()
-st.logo("assets/logo.svg", size="large")
+st.logo(str(Path(__file__).resolve().parent / "assets" / "logo.svg"), size="large")
 
 M = D.ws()["meta"]
 with st.sidebar:
