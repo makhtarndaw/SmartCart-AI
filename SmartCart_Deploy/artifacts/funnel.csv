@@ -1,0 +1,5 @@
+step,sessions,purchasing_sessions,share_of_purchasing_sessions
+At least 3 events,1181709,153014.0,1.0
+All reconstructed sessions,3324870,156439.0,1.0223835727449775
+No purchase in first 3 events,1159511,130816.0,0.854928307213719
+Complete sessions (final dataset),1159451,130813.0,0.8549087011645993

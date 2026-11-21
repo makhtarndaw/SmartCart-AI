@@ -1,0 +1,17 @@
+sequence,share,result
+cart > cart > cart,0.2425215754980209,False positive
+view > cart > cart,0.14017584841995978,False positive
+view > view > cart,0.1041626111219259,False positive
+view > cart > view,0.08837843099085069,False positive
+cart > cart > view,0.05535007462202323,False positive
+remove_from_cart > remove_from_cart > remove_from_cart,0.05221919408214912,False positive
+cart > view > cart,0.05147297384984751,False positive
+cart > cart > remove_from_cart,0.027950814353383948,False positive
+view > view > view,0.3967547244484021,False negative
+cart > cart > cart,0.1141782922726823,False negative
+view > cart > cart,0.11012169783318491,False negative
+view > view > cart,0.0896408429801128,False negative
+remove_from_cart > remove_from_cart > remove_from_cart,0.08043929949539923,False negative
+view > cart > view,0.07005046007717423,False negative
+cart > view > view,0.04610665875136044,False negative
+view > remove_from_cart > remove_from_cart,0.024735331948154745,False negative

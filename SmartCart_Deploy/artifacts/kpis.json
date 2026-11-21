@@ -1,0 +1,137 @@
+{
+  "raw_events": 20692840,
+  "clean_events": 19583742,
+  "original_ids": {
+    "events_without_session": 4085,
+    "sessions_over_two_months": 14230,
+    "sessions_with_several_users": 272,
+    "sessions_with_30min_break": 184471
+  },
+  "sessions": {
+    "total": 3324870,
+    "median_events": 1.0,
+    "purchase_rate": 0.047051162902609724,
+    "cross_month": 59
+  },
+  "dataset": {
+    "sessions": 1159451,
+    "buyers": 130813,
+    "purchase_rate": 0.11282322409485179
+  },
+  "cart_test": {
+    "odds_ratio": 2.824476319186905,
+    "chi2": 28230.848900363086,
+    "p_value": 0.0
+  },
+  "split": {
+    "crossing_removed": 19,
+    "train": {
+      "period": "Oct - Dec 2019",
+      "sessions": 703762,
+      "purchase_rate": 0.11289470019694157
+    },
+    "validation": {
+      "period": "Jan 2020",
+      "sessions": 231607,
+      "purchase_rate": 0.11683152927156779
+    },
+    "test": {
+      "period": "Feb 2020",
+      "sessions": 224063,
+      "purchase_rate": 0.10846056689413246
+    }
+  },
+  "model": {
+    "name": "XGBoost (Optuna-optimized)",
+    "params": {
+      "n_estimators": 297,
+      "max_depth": 7,
+      "learning_rate": 0.026473623258453708,
+      "subsample": 0.7732384546253949,
+      "colsample_bytree": 0.6642645155626334
+    },
+    "features": [
+      "action_1_cart",
+      "action_1_remove_from_cart",
+      "action_1_view",
+      "action_2_cart",
+      "action_2_remove_from_cart",
+      "action_2_view",
+      "action_3_cart",
+      "action_3_remove_from_cart",
+      "action_3_view",
+      "n_cart",
+      "n_remove",
+      "avg_price",
+      "distinct_products",
+      "distinct_categories",
+      "gap_1_2",
+      "gap_2_3",
+      "session_duration_3"
+    ],
+    "threshold": 0.15615558624267578,
+    "segment_limits": [
+      0.05499024391174317,
+      0.16539302468299863,
+      0.21531119346618652
+    ],
+    "val": {
+      "pr_auc": 0.21050314499506156,
+      "mean_proba": 0.11894995719194412,
+      "base_rate": 0.11683152927156779
+    },
+    "test": {
+      "pr_auc": 0.2020359667799222,
+      "base_rate": 0.10846056689413246,
+      "precision": 0.18717282664592097,
+      "recall": 0.584108303843305,
+      "f1": 0.2835002646268761,
+      "flagged": 0.33847176910065474,
+      "tp": 14195,
+      "fp": 61644,
+      "fn": 10107,
+      "tn": 138117
+    },
+    "shap_base_value": -2.0732810497283936
+  },
+  "feature_stats": {
+    "avg_price": {
+      "p01": 0.48,
+      "p25": 3.1566666666666667,
+      "median": 5.24,
+      "p75": 10.0,
+      "p99": 117.55166666666668
+    },
+    "gap_1_2": {
+      "p01": 0.0,
+      "p25": 12.0,
+      "median": 38.0,
+      "p75": 106.0,
+      "p99": 1265.0
+    },
+    "gap_2_3": {
+      "p01": 1.0,
+      "p25": 10.0,
+      "median": 32.0,
+      "p75": 92.0,
+      "p99": 1193.0
+    },
+    "session_duration_3": {
+      "p01": 2.0,
+      "p25": 36.0,
+      "median": 98.0,
+      "p75": 236.0,
+      "p99": 1656.0
+    }
+  },
+  "ab_test": {
+    "base_rate": 0.2587336456774043,
+    "users_per_day": 2338.1363636363635,
+    "session_purchase_rate": 0.13965939358067206,
+    "sessions_per_day": 3845.0689655172414
+  },
+  "hillstrom": {
+    "customers": 64000,
+    "available": true
+  }
+}

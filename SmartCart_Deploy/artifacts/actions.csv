@@ -1,0 +1,9 @@
+segment,has_cart,action,sessions,purchase_rate
+1. Top 10%,0,Highlight viewed products,691,0.19681620839363242
+1. Top 10%,1,Facilitate checkout,20618,0.23765641672325152
+2. Next 20%,0,Personalized recommendations,7239,0.1609338306395911
+2. Next 20%,1,Cart reminder,36238,0.17605828136210608
+3. Middle 30%,0,Recommend similar products,23451,0.09590209372734639
+3. Middle 30%,1,Cart reminder,44579,0.12963502994683596
+4. Bottom 40%,0,Product discovery or no action,90559,0.03914575028434501
+4. Bottom 40%,1,Low-cost cart reminder,688,0.21511627906976744

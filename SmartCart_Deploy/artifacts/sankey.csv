@@ -1,0 +1,25 @@
+source,target,sessions
+1:cart,2:cart,182970
+1:cart,2:remove_from_cart,12486
+1:cart,2:view,52108
+1:remove_from_cart,2:cart,10304
+1:remove_from_cart,2:remove_from_cart,72059
+1:remove_from_cart,2:view,17304
+1:view,2:cart,216651
+1:view,2:remove_from_cart,28232
+1:view,2:view,567337
+2:cart,3:cart,287268
+2:cart,3:remove_from_cart,24239
+2:cart,3:view,98418
+2:remove_from_cart,3:cart,12031
+2:remove_from_cart,3:remove_from_cart,79564
+2:remove_from_cart,3:view,21182
+2:view,3:cart,103814
+2:view,3:remove_from_cart,15911
+2:view,3:view,517024
+3:cart,out:no purchase,338437
+3:cart,out:purchase,64676
+3:remove_from_cart,out:no purchase,99633
+3:remove_from_cart,out:purchase,20081
+3:view,out:no purchase,590568
+3:view,out:purchase,46056
