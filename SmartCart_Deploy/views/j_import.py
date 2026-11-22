@@ -89,7 +89,7 @@ with r:
 with l:
     up = st.file_uploader("Your file", type=["csv", "txt", "xlsx", "xls", "parquet", "zip"], label_visibility="collapsed")
     st.download_button("No file at hand? Download a sample company export (Maison Lumière)", icon=":material/download:",
-                       data=open("assets/maison_lumiere_export.zip", "rb").read(), file_name="maison_lumiere_export.zip",
+                       data=(D.ART.parent / "assets" / "maison_lumiere_export.zip").read_bytes(), file_name="maison_lumiere_export.zip",
                        mime="application/zip", use_container_width=True)
     st.caption("A fictional French beauty e-shop: unzip it, then drop the CSV above.")
 
