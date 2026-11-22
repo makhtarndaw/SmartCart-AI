@@ -17,14 +17,14 @@ STEPS = [
 ]
 
 CUSTOMER_GROUPS = {  # RFM segment -> plain name, emoji, one-line meaning, what to do
-    "Champions": ("Best customers", "award", "Buy often, bought recently.", "→ Reward them with early access and gifts. No discounts."),
+    "Champions": ("Best customers", "award", "Buy often, bought recently.", "Reward them with early access and gifts. No discounts."),
     "Loyal": ("Loyal customers", "heart", "Buy often, a bit less recently.", "Loyalty points and replenishment reminders."),
     "Promising": ("Promising", "trend_up", "2 orders, recent.", "Push the 3rd order with product bundles."),
     "New customers": ("New customers", "sparkles", "First order this month.", "Welcome series and a reason to come back."),
     "Need attention": ("Need a nudge", "bell", "2 orders, quieter lately.", "Reminder on their favourite brand."),
     "At risk": ("Slipping away", "alert", "Good customers gone silent for 75+ days.", "Win-back e-mail with a personal offer."),
     "Hibernating": ("Sleeping", "moon", "One order, 1–3 months ago.", "Low-cost reactivation: new arrivals."),
-    "Lost": ("Lost", "user_x", "One order, more than 3 months ago.", "→ Newsletter only, don't spend budget."),
+    "Lost": ("Lost", "user_x", "One order, more than 3 months ago.", "Newsletter only, don't spend budget."),
 }
 INTENT_GROUPS = {
     "1. Top 10%": ("Ready to buy", "#0d366b"),
