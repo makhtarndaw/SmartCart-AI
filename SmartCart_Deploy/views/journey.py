@@ -13,7 +13,7 @@ AVG = K["dataset"]["purchase_rate"]
 
 page_header("Analytics", "Session behaviour",
             "Which behaviours in the first three actions of a session are linked to a later purchase? "
-            f"All results are correlations on {K['dataset']['sessions']:,} scored sessions of your data — not causal effects.")
+            f"All results are correlations on {K['dataset']['sessions']:,} scored sessions of your data, not causal effects.")
 
 if not D.intent_available():
     st.warning("Not enough eligible sessions in this workspace to run the purchase-intent model (sessions with at "
@@ -54,8 +54,8 @@ with tab1:
                       margin=dict(l=10, r=60, t=60, b=10))
     chart(fig, max(420, 24 * len(s) + 100))
     st.caption("■ Blue = at least one cart action · ■ Green = view only. Hover a bar for the number of sessions.")
-    insight("Every sequence with a cart action beats the average; <b>view → view → view</b> — the most common "
-            "journey — is the only one below it. The best sequences contain a <b>removal</b>: these visitors "
+    insight("Every sequence with a cart action beats the average; <b>view → view → view</b>, the most common "
+            "journey, is the only one below it. The best sequences contain a <b>removal</b>: these visitors "
             "manage their cart just before checking out (often returning visitors).")
 
 # ------------------------------------------------------------- cart & removals ---
@@ -80,7 +80,7 @@ with tab2:
         fig.update_layout(title="By number of cart removals (first 3 events)",
                           yaxis=dict(tickformat=".0%"), xaxis=dict(title="Cart removals"))
         chart(fig, 360)
-    insight("One removal <b>doubles</b> the purchase rate; two or three removals bring it down again — those "
+    insight("One removal <b>doubles</b> the purchase rate; two or three removals bring it down again: those "
             "visitors are emptying the cart rather than finalising it. Motivated visitors add to cart: forcing a "
             "cart addition would not necessarily create purchases (self-selection).")
 

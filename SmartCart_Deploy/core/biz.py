@@ -305,7 +305,7 @@ def campaigns(a=None):
             action="E-mail featuring their favourite brand's new arrivals + a time-limited incentive.",
             kpi="Reactivation rate within 14 days", revenue=len(risk) * a["uplift"] * 4 * med_aov(risk),
             cost=len(risk) * a["email_cost"],
-            assumption=f"Conversion uplift ×4 the Hillstrom average ({a['uplift'] * 4:.1%}) — repeat buyers react more."))
+            assumption=f"Conversion uplift ×4 the Hillstrom average ({a['uplift'] * 4:.1%}), since repeat buyers react more."))
 
     # 3. Second purchase for new customers
     new = c[c.segment == "New customers"]

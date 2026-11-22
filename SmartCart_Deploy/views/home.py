@@ -224,7 +224,7 @@ st.markdown(f"""
 <div class="lp-lead">No dashboards to decode. SmartCart reads your data and tells you, in plain words, what is happening and what to do next.</div>
 <div class="lp-feat">
   <div class="lp-f"><div class="ic">{icon("chart", 22)}</div><h4>Instant diagnosis</h4>
-    <p>Revenue, conversion and basket trends, unusual days and a 4-week sales forecast — explained in plain sentences.</p></div>
+    <p>Revenue, conversion and basket trends, unusual days and a 4-week sales forecast, explained in plain sentences.</p></div>
   <div class="lp-f"><span class="tag">AI</span><div class="ic">{icon("cpu", 22)}</div><h4>Purchase-intent scoring</h4>
     <p>After only three clicks, every visit is scored by our model: ready to buy, hesitating or just browsing.</p></div>
   <div class="lp-f"><div class="ic">{icon("users", 22)}</div><h4>Customer groups</h4>
@@ -234,7 +234,7 @@ st.markdown(f"""
   <div class="lp-f"><div class="ic">{icon("cart", 22)}</div><h4>Cart recovery</h4>
     <p>See the revenue left in abandoned carts and who to remind, with the value at stake for each shopper.</p></div>
   <div class="lp-f"><div class="ic">{icon("target", 22)}</div><h4>Action plan with export</h4>
-    <p>Campaigns ranked by expected profit, with who, what and when — and the customer list ready for your e-mail tool.</p></div>
+    <p>Campaigns ranked by expected profit, with who, what and when, plus the customer list ready for your e-mail tool.</p></div>
 </div>
 
 <div class="lp-eyebrow">How it works</div>
@@ -257,7 +257,7 @@ st.markdown(f"""
       <h2>An AI that reads intent from the first three clicks</h2>
       <p>Our gradient-boosting model was trained and tuned on {events_m:.1f} million events and {MC['dataset']['sessions'] / 1e6:.2f}
       million visits of a cosmetics e-shop, then validated on a month it had never seen. Each visit is explained, not
-      just scored — and the recommended actions are grounded in a randomised marketing experiment.</p>
+      just scored, and the recommended actions are grounded in a randomised marketing experiment.</p>
       <p>When a new store connects its data, the pre-trained model is applied directly. In our tests it ranked a new
       store's visitors better than a model trained on that store's history alone.</p>
     </div>

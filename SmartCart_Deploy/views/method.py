@@ -41,7 +41,7 @@ with tab1:
 In the SmartCart training data (REES46, 20.7M events), the platform's own session IDs were unreliable:
 
 - **{O['events_without_session']:,}** events have no session ID
-- **{O['sessions_over_two_months']:,}** sessions span two months — they would leak across the monthly split
+- **{O['sessions_over_two_months']:,}** sessions span two months: they would leak across the monthly split
 - **{O['sessions_with_30min_break']:,}** sessions contain a > 30-minute break (several visits merged)
 - **{O['sessions_with_several_users']:,}** sessions are shared by several users
 
@@ -55,7 +55,7 @@ with tab2:
         "Element": ["Unit of analysis", "Prediction moment", "Eligible population", "Horizon", "Target",
                     "Incomplete sessions"],
         "Definition": ["A reconstructed session (one user, events ≤ 30 min apart)",
-                       "Right after the 3rd event — only information available at that moment is used",
+                       "Right after the 3rd event, using only the information available at that moment",
                        "Sessions with ≥ 3 events and no purchase among the first three",
                        "Until the end of the same session",
                        "future_purchase = 1 if at least one purchase happens after the 3rd event",
@@ -85,7 +85,7 @@ with tab3:
     st.markdown(f"""
 - **Chronological split** reproduces a real forecasting situation. Each session belongs to the month of its prediction moment.
 - **Temporal leakage**: {sp['crossing_removed']} train/validation sessions whose outcome falls in the next month were removed.
-- **Metric**: PR-AUC — accuracy is meaningless with 89% negatives; a random model scores the purchase rate.
+- **Metric**: PR-AUC. Accuracy is meaningless with 89% negatives; a random model scores the purchase rate.
 - **Model selection** on January only; the **threshold** (best F1 = {K['model']['threshold']:.3f}) and **segment limits**
   are learned on January; February is touched once, for the final evaluation.
 - **Final model**: XGBoost, 30 Optuna trials, no class weighting → calibrated probabilities

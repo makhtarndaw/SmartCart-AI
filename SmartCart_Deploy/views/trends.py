@@ -20,11 +20,11 @@ prev4 = hist.iloc[-56:-28].revenue.sum()
 kpi(c[0], "Revenue · last 4 weeks", B.money(last4), B.delta_html(last4, prev4).replace(" vs prev. month", " vs prior 4 weeks"))
 if fc is not None:
     kpi(c[1], "Forecast · next 4 weeks", B.money(fc.forecast.sum()),
-        f"80% range {B.money(fc.low.sum())} – {B.money(fc.high.sum())}", accent=True)
+        f"80% range: {B.money(fc.low.sum())} to {B.money(fc.high.sum())}", accent=True)
     kpi(c[2], "Underlying trend", f"{wtrend:+.1%} / week", "last 10 weeks, seasonality removed")
 else:
-    kpi(c[1], "Forecast · next 4 weeks", "—", "needs ≥ 2 weeks of sales data", accent=True)
-    kpi(c[2], "Underlying trend", "—", "needs ≥ 2 weeks of sales data")
+    kpi(c[1], "Forecast · next 4 weeks", "n/a", "needs ≥ 2 weeks of sales data", accent=True)
+    kpi(c[2], "Underlying trend", "n/a", "needs ≥ 2 weeks of sales data")
 kpi(c[3], "Unusual days detected", f"{int(an.anomaly.sum())}", "robust z-score > 3 vs 4-week baseline")
 
 tab1, tab2, tab3, tab4 = st.tabs(["Revenue & forecast", "Seasonality", "Brands on the move", "Products on the move"])
@@ -60,7 +60,7 @@ with tab1:
     if len(top):
         rows = [f"<b>{r.day:%a %d %b %Y}</b>: {r[metric]:,.0f} vs usual {r.baseline:,.0f} ({r.change:+.0%})"
                 for _, r in top.iterrows()]
-        insight("Most unusual days — " + " · ".join(rows[:5]))
+        insight("Most unusual days: " + " · ".join(rows[:5]))
     st.caption("Forecast model: log-linear trend + day-of-week effects fitted on the last 10 weeks (holiday dip "
                "excluded). Use it for staffing, stock and budget planning, not as a precise target.")
 
@@ -74,7 +74,7 @@ with tab2:
                                colorscale=SEQ_SCALE, xgap=2, ygap=2,
                                colorbar=dict(tickprefix=B.cur(), thickness=10, outlinewidth=0),
                                hovertemplate=B.cfmt("%{y} %{x}<br>$%{z:,.0f} revenue (5 months)<extra></extra>")))
-    fig.update_layout(title="When your customers buy — revenue by weekday × hour (UTC)", yaxis=dict(autorange="reversed"))
+    fig.update_layout(title="When your customers buy: revenue by weekday × hour (UTC)", yaxis=dict(autorange="reversed"))
     chart(fig, 360)
     d = B.load("daily").copy()
     d["day"] = pd.to_datetime(d.day)
@@ -97,7 +97,7 @@ with tab2:
     best = hr.sort_values(ascending=False).head(3).index.tolist()
     insight(f"Peak buying hours: <b>{', '.join(f'{h}h' for h in sorted(best))}</b> (UTC) and best day "
             f"<b>{names[int(dw.revenue.idxmax())]}</b>. Schedule e-mails and promotions just before these peaks; "
-            f"weakest day: <b>{names[int(dw.revenue.idxmin())]}</b> — a good slot for a flash offer.")
+            f"weakest day: <b>{names[int(dw.revenue.idxmin())]}</b>. → A good slot for a flash offer.")
 
 with tab3:
     g = B.brand_growth()

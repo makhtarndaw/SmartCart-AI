@@ -68,14 +68,14 @@ with c[0]:
         ("Population", "Visitors scored in the next 20% and middle 30% after their third action."),
         ("Randomisation", "By user ID (hash), so a person always sees the same version across sessions."),
         ("Treatment", "Cart reminder if the visitor has a cart, viewed-product recommendations otherwise."),
-        ("Control", "No action — measures the incremental effect, not the propensity."),
+        ("Control", "No action. Measures the incremental effect, not the propensity."),
     ], 1):
         st.markdown(f'<div class="step"><div class="num">{i}</div><div class="txt"><b>{t}.</b> {d}</div></div>',
                     unsafe_allow_html=True)
 with c[1]:
     for i, (t, d) in enumerate([
         ("Primary KPI", "Incremental conversion = treatment − control purchase rate."),
-        ("Guardrail", "Margin after action cost — Hillstrom shows profit is much noisier than conversion."),
+        ("Guardrail", "Margin after action cost. Hillstrom shows profit is much noisier than conversion."),
         ("Heterogeneity", "Read effects by segment and with / without cart (pre-registered)."),
         ("Duration", "At least two full weeks to neutralise day-of-week effects."),
     ], 5):

@@ -23,14 +23,14 @@ looked = p[p.views >= max(200, p.views.quantile(0.99))].assign(conv=lambda x: x.
 
 tk = []
 if len(br):
-    tk.append(f"Your top 3 brands — <b>{', '.join(b.title() for b in br.index[:3])}</b> — make "
+    tk.append(f"Your top 3 brands, <b>{', '.join(b.title() for b in br.index[:3])}</b>, make "
               f"<b>{br.head(3).sum() / tot:.0%}</b> of revenue.")
 if g is not None and len(g):
     up = g.sort_values("abs_change", ascending=False).iloc[0]
     tk.append(f"<b>{up.brand.title()}</b> is your fastest-growing brand ({B.money(up.abs_change)} more than the month "
               "before): give it visibility and secure stock.")
 if len(looked):
-    tk.append(f"<b>{len(looked)} popular products</b> are viewed a lot but rarely bought — fix their page, price or "
+    tk.append(f"<b>{len(looked)} popular products</b> are viewed a lot but rarely bought. → Fix their page, price or "
               "availability to convert demand you already have.")
 if len(pairs):
     tk.append(f"We found <b>{len(pairs)} product pairs</b> often bought together: ready-made bundle ideas.")
@@ -78,7 +78,7 @@ if len(looked):
                                 "units": st.column_config.NumberColumn("Sold", format="%d")})
 
 if len(pairs):
-    st.markdown("### Bundle ideas — bought together")
+    st.markdown("### Bundle ideas: bought together")
     st.caption("Show these together on product pages, in post-purchase e-mails or as a bundle.")
     cols = st.columns(2)
     for i, (_, x) in enumerate(pairs.sort_values("together", ascending=False).head(8).iterrows()):

@@ -10,7 +10,7 @@ K = D.kpis()
 
 page_header("Purchase Intent AI · Model card", "Explainability",
             "Why does the model score a session high or low? Exact TreeSHAP values on 2,000 February sessions, "
-            "and an analysis of where — and why — the model is wrong.")
+            "and an analysis of where and why the model is wrong.")
 
 tab1, tab2 = st.tabs(["SHAP: what drives the score", "Error analysis: who is misclassified"])
 
@@ -46,7 +46,7 @@ with tab1:
                 customdata=v, name=D.FEATURE_LABELS[f], showlegend=False,
                 hovertemplate=D.FEATURE_LABELS[f] + "<br>value %{customdata:.2f}<br>SHAP %{x:.3f}<extra></extra>"))
         fig.add_vline(x=0, line=dict(color=INK_3, width=1))
-        fig.update_layout(title="SHAP summary — each dot is one session",
+        fig.update_layout(title="SHAP summary: each dot is one session",
                           yaxis=dict(tickvals=list(range(len(top))), ticktext=[D.FEATURE_LABELS[f] for f in top],
                                      showgrid=False),
                           xaxis=dict(title="Impact on the score (log-odds) ← lowers · raises →"))
@@ -63,7 +63,7 @@ with tab1:
             f"{row.mean_shap:+.3f}", f"mean SHAP of “action 3 = view” · purchase rate {pct(rates[row.action_3])}")
     insight("Why do the <i>view</i> variables look negative? With one-hot encoding, “action 3 = view” really means "
             "<b>“no cart action at step 3”</b>. Everyone views products, so a view on its own carries little "
-            "information — the model reads it as the absence of a cart signal.")
+            "information: the model reads it as the absence of a cart signal.")
 
 with tab2:
     ep = D.table("error_profile").set_index("result")
@@ -104,10 +104,10 @@ with tab2:
     with l:
         insight("<b>False positives are abandoned carts.</b> 85% contain a cart addition and their profile is "
                 "almost identical to true positives. From three events, nothing separates a cart that will be paid "
-                "from one that will be abandoned — and these are exactly the visitors a <b>cart reminder</b> should target.")
+                "from one that will be abandoned, and these are exactly the visitors a <b>cart reminder</b> should target.")
     with r:
         insight("<b>False negatives are late deciders.</b> 41% are <i>view → view → view</i>: they browsed first and "
-                "decided later. Catching them would require waiting for more events — leaving less time to act.",
+                "decided later. Catching them would require waiting for more events, which leaves less time to act.",
                 kind="warn")
 
 footer()

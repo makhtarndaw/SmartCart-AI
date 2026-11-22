@@ -30,11 +30,11 @@ for _c in CATEGORICAL:
 
 ACTION_PLAYBOOK = {
     "Facilitate checkout": ("Remove friction: express checkout, saved payment details, visible free-shipping "
-                            "threshold. No discount — most of these visitors would buy anyway.", "Very low"),
+                            "threshold. No discount: most of these visitors would buy anyway.", "Very low"),
     "Highlight viewed products": ("Bring back the products already seen (recently-viewed carousel).", "Very low"),
     "Cart reminder": ("On-site or e-mail reminder of the products left in the cart. Matches the observed "
-                      "behaviour — the most promising action.", "Low"),
-    "Personalized recommendations": ("Recommendations based on the products viewed — a behaviour-matched "
+                      "behaviour, the most promising action.", "Low"),
+    "Personalized recommendations": ("Recommendations based on the products viewed, a behaviour-matched "
                                      "message beats a generic one (Hillstrom lesson).", "Low"),
     "Recommend similar products": ("Show alternatives to the products viewed to help an undecided visitor "
                                    "choose.", "Low"),

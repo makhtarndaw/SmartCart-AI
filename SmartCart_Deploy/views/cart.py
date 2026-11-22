@@ -85,7 +85,7 @@ with r:
     fig.update_layout(title="Abandoned value by main brand in cart", xaxis=dict(tickprefix=B.cur(), tickformat=",.0f"))
     chart(fig, 460)
 insight("Behaviour insight from the Purchase Intent AI: shoppers who <b>remove</b> an item are often finalising their "
-        "order — the real risk is the cart left untouched. Prioritise reminders on high-value carts and on the products "
+        "order. The real risk is the cart left untouched. → Prioritise reminders on high-value carts and on the products "
         "above (check their price, delivery cost and stock first).")
 
 footer()

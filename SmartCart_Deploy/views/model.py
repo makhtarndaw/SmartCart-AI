@@ -13,7 +13,7 @@ T = M["test"]
 
 page_header("Purchase Intent AI · Model card", "Model performance",
             "Four gradient-boosting / tree models compared, the best tuned with Optuna, evaluated out-of-time on "
-            "February 2020 — a month the model never saw.")
+            "February 2020, a month the model never saw.")
 
 c = st.columns(5)
 kpi(c[0], "PR-AUC (test)", f"{T['pr_auc']:.3f}", f"random model = {T['base_rate']:.3f}", accent=True)
@@ -52,9 +52,9 @@ with tab1:
         chart(fig, 340)
     disp = mc.rename(columns={"model": "Model", "pr_auc": "PR-AUC", "precision": "Precision @0.5",
                               "recall": "Recall @0.5", "f1": "F1 @0.5", "mean_proba": "Mean predicted prob."})
-    st.dataframe(disp.style.format({c: "{:.3f}" for c in disp.columns if c != "Model"}, na_rep="—"),
+    st.dataframe(disp.style.format({c: "{:.3f}" for c in disp.columns if c != "Model"}, na_rep="n/a"),
                  hide_index=True, use_container_width=True)
-    insight("The four models are within 0.004 PR-AUC of each other — the ceiling comes from the information in "
+    insight("The four models are within 0.004 PR-AUC of each other: the ceiling comes from the information in "
             "three events, not the algorithm. Class weighting inflated the scores (mean ≈ 0.46 vs 0.12 real): the "
             f"<b>final XGBoost</b> drops weighting, is tuned with 30 Optuna trials ({M['params']['n_estimators']} "
             f"trees, depth {M['params']['max_depth']}) and outputs <b>calibrated probabilities</b>.")
@@ -76,7 +76,7 @@ with tab2:
         st.metric("Precision", pct(prec))
         st.metric("Recall", pct(rec))
         st.metric("Sessions flagged", pct(flagged))
-        st.metric("Non-buyers flagged per buyer found", f"{fp / tp:.1f}" if tp else "—")
+        st.metric("Non-buyers flagged per buyer found", f"{fp / tp:.1f}" if tp else "n/a")
     with r:
         gg = g[g.set == which].copy()
         gg["precision"] = gg.tp / (gg.tp + gg.fp).replace(0, np.nan)
@@ -121,7 +121,7 @@ with tab2:
                                                                                    range=[0, 0.6]), showlegend=False)
         chart(fig, 340)
     insight("At 0.5 the model flags <b>nobody</b>: calibrated probabilities rarely exceed 0.4. Even at the best-F1 "
-            f"threshold the model flags {pct(T['flagged'], 0)} of visitors — too broad for a campaign. That is why "
+            f"threshold the model flags {pct(T['flagged'], 0)} of visitors, too broad for a campaign. That is why "
             "SmartCart AI <b>ranks</b> visitors instead of using a single cut-off.")
 
 # --------------------------------------------------------------- ranking ---------
@@ -192,7 +192,7 @@ with tab4:
                       xaxis=dict(title="Predicted purchase probability", range=[0, 0.5]),
                       yaxis=dict(tickformat=".0%", title="Share of class"))
     chart(fig, 340)
-    insight("PR-AUC stays between 0.19 and 0.21 every week and moves with the weekly purchase rate — the model does "
+    insight("PR-AUC stays between 0.19 and 0.21 every week and moves with the weekly purchase rate: the model does "
             "not degrade over time. Buyers' scores are shifted right, but the two distributions overlap heavily: "
             "abandoned carts look exactly like carts that will be paid.")
 

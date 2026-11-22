@@ -6,7 +6,7 @@ from core.theme import footer, kpi
 
 U.header(4, "Your action plan",
          "Concrete marketing actions built from your data, ranked by expected profit. Each one tells you who to "
-         "target, what to do and when — and gives you the list of customers to export to your e-mailing tool.")
+         "target, what to do and when, and gives you the list of customers to export to your e-mailing tool.")
 
 with st.expander("Adjust the assumptions behind the estimates", icon=":material/tune:"):
     a1, a2, a3 = st.columns(3)

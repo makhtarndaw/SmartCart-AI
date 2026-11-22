@@ -6,7 +6,7 @@ from core.theme import BLUE, INK_3, ORANGE, chart, footer, insight, kpi, page_he
 
 K = D.kpis()
 
-page_header("Activation", "Campaign uplift — causal evidence",
+page_header("Activation", "Campaign uplift: causal evidence",
             "Our click data contains no marketing action, so it cannot tell who <i>reacts</i> to one. We use the "
             "<b>Hillstrom</b> experiment: 64,000 customers randomly assigned to a men's e-mail, a women's e-mail or no "
             "e-mail. Randomisation makes the difference between groups a causal effect.")
@@ -26,7 +26,7 @@ kpi(c[0], "Visit rate · no e-mail", pct(means.loc["No E-Mail", "visit"]), "cont
 kpi(c[1], "Visit rate · men's e-mail", pct(means.loc["Mens E-Mail", "visit"]),
     f"+{ov[(ov.outcome == 'visit') & (ov.email == 'Mens E-Mail')].effect.iloc[0] * 100:.1f} pts", accent=True)
 kpi(c[2], "Conversion · men's e-mail", pct(means.loc["Mens E-Mail", "conversion"], 2),
-    f"vs {pct(means.loc['No E-Mail', 'conversion'], 2)} without — more than ×2")
+    f"vs {pct(means.loc['No E-Mail', 'conversion'], 2)} without, more than ×2")
 kpi(c[3], "Extra spend / customer", f"${ov[(ov.outcome == 'spend') & (ov.email == 'Mens E-Mail')].effect.iloc[0]:.2f}",
     "men's e-mail vs nothing")
 
@@ -57,12 +57,12 @@ with tab1:
                       "Increase in visit rate (pts)"), 400)
     insight("Both e-mails raise visits in <b>every</b> group (all 95% intervals above zero). The men's e-mail effect "
             "grows with propensity (≈ 6 → 9 pts); the women's e-mail shows no pattern. <b>Propensity alone does not "
-            "tell where an action works — it depends on the action.</b>")
+            "tell where an action works: it depends on the action.</b>")
 
 with tab2:
     chart(effect_plot(D.table("hill_history"), "Effect of the e-mail on the visit rate, by past purchases",
                       "Increase in visit rate (pts)"), 400)
-    insight("Customers who only bought men's products: men's e-mail +7 pts vs women's e-mail +1 pt — intervals far "
+    insight("Customers who only bought men's products: men's e-mail +7 pts vs women's e-mail +1 pt, with intervals far "
             "apart. <b>A message that matches past behaviour works much better than a generic one</b> → SmartCart AI "
             "sends cart reminders to cart users and viewed-product recommendations to browsers.")
 
@@ -78,7 +78,7 @@ with tab3:
     sp = D.table("hill_spend")
     sig = ((sp.ci_low * margin - cost) > 0).sum()
     insight(f"With these assumptions, <b>{sig} of 8</b> e-mail × group combinations are significantly profitable. Spend "
-            "is very noisy (few buyers), so profitability cannot be assumed — <b>the A/B test must track margin, not "
+            "is very noisy (few buyers), so profitability cannot be assumed. → <b>The A/B test must track margin, not "
             "only conversion.</b>", kind="warn" if sig < 4 else "insight")
 
 st.markdown('<div class="section">Three lessons applied to SmartCart AI</div>', unsafe_allow_html=True)

@@ -15,7 +15,7 @@ FS = K["feature_stats"]
 ACTS = ["view", "cart", "remove_from_cart"]
 
 page_header("Purchase Intent AI", "Live intent scoring",
-            "Describe the first three actions of a visitor — or load a real session from your data — and get the "
+            "Describe the first three actions of a visitor, or load a real session from your data, and get the "
             "purchase probability, the score segment, the next best action and the reasons behind the score.")
 
 if not D.intent_available():
@@ -114,10 +114,10 @@ with right:
     truth = st.session_state.get("truth")
     if truth is not None and (a1, a2, a3) == (truth["action_1"], truth["action_2"], truth["action_3"]):
         outcome = "**bought** later in the session" if truth["future_purchase"] == 1 else "**did not buy**"
-        st.info(f"Real session **{truth['session_id']}** ({truth['prediction_time']:%d %b %Y %H:%M}) — "
+        st.info(f"Real session **{truth['session_id']}** ({truth['prediction_time']:%d %b %Y %H:%M}): "
                 f"this visitor {outcome}.")
 
-st.markdown("##### Why this score? — SHAP explanation of this session")
+st.markdown("##### Why this score? SHAP explanation of this session")
 c = contrib[0]
 order = np.argsort(-np.abs(c))
 keep = order[:8]

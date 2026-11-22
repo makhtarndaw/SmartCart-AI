@@ -12,7 +12,7 @@ from core.theme import footer, kpi
 
 U.header(0, "Welcome to SmartCart AI",
          "Upload your store's activity and get, in a minute, a clear diagnosis of your business and a ready-to-use "
-         "marketing action plan — powered by our purchase-prediction AI.")
+         "marketing action plan, powered by our purchase-prediction AI.")
 
 W = D.ws()
 M = W["meta"]
@@ -45,7 +45,7 @@ def read_file(name, content):
 
 # ------------------------------------------------- already analysed: show summary --
 if not D.is_demo() and not st.session_state.get("replace_data"):
-    st.success(icon=":material/check_circle:", body=f"**{M['name']}** is connected — {M['n_events']:,} events from "
+    st.success(icon=":material/check_circle:", body=f"**{M['name']}** is connected: {M['n_events']:,} events from "
                f"{B.month_label(M['months'][0])} to {B.month_label(M['months'][-1])}.")
     c = st.columns(4)
     kpi(c[0], "Customers who bought", f"{M['n_customers']:,}")
@@ -91,7 +91,7 @@ with l:
     st.download_button("No file at hand? Download a sample company export (Maison Lumière)", icon=":material/download:",
                        data=(D.ART.parent / "assets" / "maison_lumiere_export.zip").read_bytes(), file_name="maison_lumiere_export.zip",
                        mime="application/zip", use_container_width=True)
-    st.caption("A fictional French beauty e-shop: unzip it, then drop the CSV above.")
+    st.caption("A fictional French beauty e-shop. Drop the downloaded zip file above, no need to unzip it.")
 
 with st.expander("What should my file contain?"):
     st.markdown("""
@@ -121,7 +121,7 @@ raw = read_file(up.name, up.getvalue())
 # ------------------------------------------------------------------ recognise -----
 st.markdown("### We read your file")
 guess = E.guess_mapping(raw.columns)
-cols_opt = ["— not in my file —"] + list(raw.columns)
+cols_opt = ["(not in my file)"] + list(raw.columns)
 labels = {**E.REQUIRED, **E.OPTIONAL}
 nice = {"event_time": "When", "event_type": "What happened", "user_id": "Customer", "product_id": "Product",
         "price": "Price", "brand": "Brand", "category": "Category", "product_name": "Product name"}

@@ -17,14 +17,14 @@ STEPS = [
 ]
 
 CUSTOMER_GROUPS = {  # RFM segment -> plain name, emoji, one-line meaning, what to do
-    "Champions": ("Best customers", "award", "Buy often, bought recently.", "Reward them — early access, gifts. No discounts."),
+    "Champions": ("Best customers", "award", "Buy often, bought recently.", "→ Reward them with early access and gifts. No discounts."),
     "Loyal": ("Loyal customers", "heart", "Buy often, a bit less recently.", "Loyalty points and replenishment reminders."),
     "Promising": ("Promising", "trend_up", "2 orders, recent.", "Push the 3rd order with product bundles."),
     "New customers": ("New customers", "sparkles", "First order this month.", "Welcome series and a reason to come back."),
     "Need attention": ("Need a nudge", "bell", "2 orders, quieter lately.", "Reminder on their favourite brand."),
     "At risk": ("Slipping away", "alert", "Good customers gone silent for 75+ days.", "Win-back e-mail with a personal offer."),
     "Hibernating": ("Sleeping", "moon", "One order, 1–3 months ago.", "Low-cost reactivation: new arrivals."),
-    "Lost": ("Lost", "user_x", "One order, more than 3 months ago.", "Newsletter only — don't spend budget."),
+    "Lost": ("Lost", "user_x", "One order, more than 3 months ago.", "→ Newsletter only, don't spend budget."),
 }
 INTENT_GROUPS = {
     "1. Top 10%": ("Ready to buy", "#0d366b"),
@@ -101,7 +101,7 @@ def diagnosis():
     if fc is not None:
         out.append(finding("forecast", f"Next 4 weeks: about {B.money(fc.forecast.sum())}",
                            f"Our forecast, based on your recent trend ({wtrend:+.1%} per week) and your weekly pattern. "
-                           f"Likely range {B.money(fc.low.sum())} – {B.money(fc.high.sum())}.", "neutral"))
+                           f"Likely range: {B.money(fc.low.sum())} to {B.money(fc.high.sum())}.", "neutral"))
 
     # 2. Abandoned carts
     ab = B.load("abandoners")
@@ -134,7 +134,7 @@ def diagnosis():
         hes = seg.loc[["2. Next 20%", "3. Middle 30%"]]
         out.append(finding("cpu", f"{k['ab_test']['sessions_per_day']:,.0f} hesitating visitors a day",
                            f"Our AI reads each visit after 3 clicks. Half of your engaged visits are hesitating: they buy "
-                           f"{(hes.buyers.sum() / hes.sessions.sum()):.0%} of the time — with the right nudge, more of them will.",
+                           f"{(hes.buyers.sum() / hes.sessions.sum()):.0%} of the time. With the right nudge, more of them will.",
                            "neutral"))
         cart = D.table("by_cart").set_index("has_cart").purchase_rate
         if 0 in cart and 1 in cart and cart[0] > 0:

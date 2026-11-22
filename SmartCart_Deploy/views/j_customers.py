@@ -8,7 +8,7 @@ from core.theme import BLUE, chart, footer
 
 U.header(2, "Your customers",
          "Every customer who bought from you, sorted into 8 simple groups based on how recently, how often and how "
-         "much they buy — with what to do for each group.")
+         "much they buy, with what to do for each group.")
 
 c = B.customers()
 seg = B.segment_summary().set_index("segment")
@@ -19,7 +19,7 @@ risk = segf.loc["At risk"]
 sleep = segf.loc[["Hibernating", "Lost"]]
 tk = [f"You have <b>{tot:,} customers</b>. Your <b>best and loyal customers</b> are "
       f"{best.customers.sum() / max(tot, 1):.0%} of them and bring "
-      f"<b>{best.revenue.sum() / max(segf.revenue.sum(), 1e-9):.0%} of revenue</b> — protect them."]
+      f"<b>{best.revenue.sum() / max(segf.revenue.sum(), 1e-9):.0%} of revenue</b>. → Protect them."]
 if risk.customers > 0:
     tk.append(f"<b>{int(risk.customers):,} good customers are slipping away</b> ({B.money(risk.revenue)} spent so far): "
               "a win-back e-mail is worth it.")

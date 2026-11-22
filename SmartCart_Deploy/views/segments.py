@@ -67,7 +67,7 @@ with r:
                       xaxis=dict(tickformat=".0%"), bargap=0.45)
     chart(fig, 380)
 
-insight("The middle 30% is the most interesting group: ~44,000 cart sessions that may be abandoned (13% buy) — a "
+insight("The middle 30% is the most interesting group: ~44,000 cart sessions that may be abandoned (13% buy), a "
         "natural target for a <b>cart reminder</b>. The bottom 40% has almost no cart activity and buys at 4%: "
         "spend nothing there.")
 
@@ -126,8 +126,8 @@ v = v.assign(journey=v.action_1.map(short) + " → " + v.action_2.map(short) + "
              segment=v.segment.str.split(". ").str[1], bought=np.where(v.future_purchase == 1, "Yes", "No"))
 c = st.columns(3)
 kpi(c[0], "Sessions shown", f"{len(v):,}")
-kpi(c[1], "Real purchase rate", pct(v.future_purchase.mean()) if len(v) else "—")
-kpi(c[2], "Mean predicted score", pct(v.score.mean()) if len(v) else "—")
+kpi(c[1], "Real purchase rate", pct(v.future_purchase.mean()) if len(v) else "n/a")
+kpi(c[2], "Mean predicted score", pct(v.score.mean()) if len(v) else "n/a")
 st.dataframe(
     v.sort_values("score", ascending=False)[["prediction_time", "journey", "avg_price", "session_duration_3", "score",
                                              "segment", "action", "bought"]],
@@ -164,7 +164,7 @@ if D.intent_available():
             kpi(c[2], "Random targeting", f"{res['base_rate']:.3f}", f"test from {res['test_from']} · "
                 f"{res['test_sessions']:,} sessions")
             better = res["pr_auc_finetuned"] > res["pr_auc_pretrained"]
-            insight("The <b>fine-tuned</b> model ranks your visitors better — you can switch to it." if better else
+            insight("The <b>fine-tuned</b> model ranks your visitors better. → You can switch to it." if better else
                     "The <b>pre-trained SmartCart model</b> ranks your visitors better than a model trained on your data "
                     "alone: the 20.7M-event training brings knowledge your history does not contain yet. Keep it.")
             if better and st.button("Use the fine-tuned model", type="primary"):

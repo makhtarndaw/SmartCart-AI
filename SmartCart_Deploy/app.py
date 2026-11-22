@@ -1,4 +1,4 @@
-"""SmartCart AI — Marketing intelligence platform for e-commerce."""
+"""SmartCart AI: marketing intelligence platform for e-commerce."""
 from pathlib import Path
 
 import streamlit as st

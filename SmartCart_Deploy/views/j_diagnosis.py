@@ -46,7 +46,7 @@ if fc is not None:
                          error_y=dict(type="data", symmetric=False, array=fw.high - fw.forecast,
                                       arrayminus=fw.forecast - fw.low, color="#64748B", thickness=1.2, width=4),
                          hovertemplate=B.cfmt("Week of %{x|%d %b %Y}<br>forecast $%{y:,.0f}<extra></extra>")))
-fig.update_layout(title="Revenue per week — and our forecast for the next 4 weeks", bargap=0.2,
+fig.update_layout(title="Revenue per week and our forecast for the next 4 weeks", bargap=0.2,
                   yaxis=dict(tickprefix=B.cur(), tickformat=",.0f"))
 chart(fig, 340)
 
